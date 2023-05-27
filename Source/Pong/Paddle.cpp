@@ -15,7 +15,6 @@ APaddle::APaddle()
 void APaddle::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -34,7 +33,7 @@ void APaddle::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void APaddle::Move(float AxisValue)
 {
 	FVector location = GetActorLocation();
-	location.X += Speed * AxisValue * FApp::GetDeltaTime();
+	location.X += _speed * AxisValue * FApp::GetDeltaTime();
 	SetActorLocation(location);
 }
 

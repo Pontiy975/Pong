@@ -3,17 +3,17 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
-#include "Paddle.generated.h"
+#include "GameFramework/Actor.h"
+#include "Ball.generated.h"
 
 UCLASS()
-class PONG_API APaddle : public APawn
+class PONG_API ABall : public AActor
 {
 	GENERATED_BODY()
-
-public:
-	// Sets default values for this pawn's properties
-	APaddle();
+	
+public:	
+	// Sets default values for this actor's properties
+	ABall();
 
 protected:
 	// Called when the game starts or when spawned
@@ -23,13 +23,16 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 private:
+	
 	UFUNCTION(BlueprintCallable)
-	void Move(float AxisValue);
+	void Reset();
+	
+	void Move(float DeltaTime);
 
 	UPROPERTY(EditAnywhere)
 	float _speed = 300;
+
+	FVector _direction;
+	FVector _baseLocation;
 };
